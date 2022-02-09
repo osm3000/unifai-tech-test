@@ -1,5 +1,6 @@
 import pandas as pd
 import configparser
+import os
 
 # from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -78,6 +79,8 @@ if best_model:
 
 json.dump(logs, open(config["DIR_PATH"]["MODEL_LOG"], "w"))
 
+
+os.mkdir(config["DIR_PATH"]["MODELS_STORED"])
 pickle.dump(
     clf,
     open(config["DIR_PATH"]["MODELS_STORED"] + model_unique_id, "wb"),
